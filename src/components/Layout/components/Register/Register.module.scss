@@ -1,0 +1,85 @@
+.bread-crumb {
+  background-color: var(--white);
+}
+.list-menu {
+  display: flex;
+  font-size: 14px;
+  padding: 15px 48px;
+}
+.icon-arrow {
+  font-size: 12px;
+  font-weight: 900;
+  margin: 0 15px;
+}
+.login-account {
+  color: var(--primary);
+}
+.title-login {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--black);
+  text-transform: uppercase;
+  margin-bottom: 28px;
+}
+.except-login {
+  font-size: 14px;
+  text-align: center;
+}
+.login-by-social {
+  margin-top: 20px;
+  text-align: center;
+}
+.login-by-social a {
+  display: inline-block;
+}
+.login-by-social img {
+  border: 0 none;
+  width: 132px;
+  height: 36px;
+}
+.login-page {
+  margin-top: 40px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+.login {
+  font-size: 14px;
+  width: 555px;
+}
+.login label {
+  padding: 5px 0;
+}
+.login input {
+  height: 45px;
+  border-radius: 30px;
+}
+.login button {
+  font-size: 14px;
+  height: 45px;
+  width: 100%;
+  font-weight: 400;
+  border-radius: 30px;
+  background-color: var(--primary);
+  border: none;
+  margin: 16px 0;
+  &:hover {
+    background-color: var(--white);
+    color: var(--primary);
+    border: 1px solid var(--primary);
+  }
+}
+
+.forget-pass {
+  font-size: 15px;
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 50px;
+}
+.forget-pass a {
+  text-decoration: underline;
+  cursor: pointer;
+  color: var(--primary);
+}

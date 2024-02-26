@@ -1,0 +1,81 @@
+.wrapper {
+  width: 100%;
+  height: 60px;
+  background-color: #ff6564;
+}
+.header-menu {
+  height: 60px;
+}
+.menu-content {
+  display: flex;
+  justify-content: center;
+  float: left;
+  text-align: center;
+  align-items: center;
+  height: 100%;
+}
+.menu-item a {
+  display: inline-block;
+  font-size: 15px;
+  text-transform: uppercase;
+  font-weight: 500;
+  padding: 16px;
+  color: var(--white);
+  cursor: pointer;
+
+  &:hover {
+    color: var(--black);
+  }
+}
+.menu-icon {
+  margin-left: 10px;
+  color: var(--white);
+}
+.menu-sale {
+  width: 200px;
+  height: 96px;
+  padding: 0;
+}
+.menu {
+  width: 1200px;
+  position: relative;
+  left: 12%;
+}
+.wrapper-menu {
+  display: flex;
+  // height: 416px;
+  width: 1200px;
+  // opacity: 1;
+  // transition: transform 0.5s ease, opacity 0.2s ease, max-height 0s step-end, max-width 0s step-end, padding 0s step-end;
+}
+
+.list-menu-item {
+  font-size: 14px;
+  float: left;
+  width: 25%;
+  padding: 0 5px;
+  text-align: left;
+}
+.list-menu-title a {
+  font-size: 15px;
+  font-weight: bold;
+  margin-top: 0;
+  color: var(--primary);
+}
+.list-menu-level-1 {
+  padding: 0;
+}
+.menu-sale-item {
+  padding: 0 20px;
+  height: 48px;
+  float: left;
+}
+.menu-sale-item a {
+  font-weight: 400;
+  font-size: 14px;
+  display: block;
+  padding: 12px 10px 12px 0px;
+  color: #000;
+  text-align: left;
+  border-bottom: solid 1px #f4f4f4;
+}
