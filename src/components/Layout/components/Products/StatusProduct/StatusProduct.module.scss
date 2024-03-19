@@ -1,0 +1,44 @@
+
+.sort {
+  display: flex;
+  margin-top: 5px;
+
+  h3 {
+    margin-top: 2px;
+    color: #707070;
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  ul {
+    display: flex;
+    padding-left: 0;
+
+    .btn-quick-sort {
+      margin: 2px 0;
+      padding-left: 12px;
+
+      a {
+        font-size: 13px;
+        position: relative;
+        color: #707070;
+
+        i {
+          height: 14px;
+          width: 14px;
+          border: 1px solid #cdcfd3;
+          border-radius: 50%;
+          display: inline-block;
+          vertical-align: middle;
+          margin: -3px 5px 0 0;
+          transition: background-color 0.3s ease;
+
+          &:hover {
+            background-color: var(--primary);
+            border: none;
+          }
+        }
+      }
+    }
+  }
+}

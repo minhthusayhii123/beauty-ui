@@ -1,9 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faAngleDoubleLeft,
-  faAngleDoubleRight,
-  faAngleRight,
-} from "@fortawesome/free-solid-svg-icons";
+import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 
 import p1 from "~/assets/images/product1.jpg";
 import p2 from "~/assets/images/p2.webp";
@@ -13,11 +9,18 @@ import p5 from "~/assets/images/product7.jpg";
 
 import styles from "./AllProducts.module.scss";
 import Product from "../Product";
-import ListMenuMini from "../ListProductMini";
 
 import classNames from "classnames/bind";
+import { useEffect, useState } from "react";
+import { db } from "~/config/firestore";
+import { collection, getDocs } from "firebase/firestore";
+import Categories from "../Products/Categories";
+import Brands from "../Products/Brands";
+import PriceRange from "../Products/PriceRange";
+import ListColor from "../Products/ListColor";
+import Outstaning from "../Products/Outstanding";
+import StatusProduct from "../Products/StatusProduct";
 const cx = classNames.bind(styles);
-
 const products = [
   {
     name: "Tinh chất cấp ẩm, sáng da L'Oreal Revitalift Serum 1.5% Hyaluronic Acid",
@@ -88,43 +91,33 @@ const products = [
   },
 ];
 
-const miniMenu = [
-  {
-    title: "Tinh chất cấp ẩm, sáng da L'Oreal Revitalift Serum 1.5%",
-    urlImg: p1,
-    currentPrice: "319.000",
-    oldPrice: "319.000",
-  },
-  {
-    title:
-      "Serum L'Oreal Paris Glycolic Bright Hỗ Trợ Sáng Da 1.0%  Glycolic Acid 30Ml",
-    urlImg: p2,
-    currentPrice: "365.000",
-    oldPrice: "519.000",
-  },
-  {
-    title:
-      "Sữa Dưỡng Thể OLAY B3+ Optics Glow & Radiance Vitamin C Dưỡng Trắng Da Toàn Thân ",
-    urlImg: p3,
-    currentPrice: "245.000",
-    oldPrice: "500.000",
-  },
-  {
-    title:
-      "Tinh chất cấp ẩm, sáng da Olay Revitalift Serum 1.5% Hyaluronic Acid",
-    urlImg: p4,
-    currentPrice: "150.000",
-    oldPrice: "319.000",
-  },
-  {
-    title: "Dầu tẩy trang Hada Labo Advanced Nourish Hyaluron Cleansing Oil",
-    urlImg: p5,
-    currentPrice: "216.000",
-    oldPrice: "319.000",
-  },
-];
-
 function AllProducts() {
+  const [products1, setProducts] = useState();
+
+  const getDataBeauty = async () => {
+    let arr = [];
+    const querySnapshot = await getDocs(collection(db, "products"));
+    querySnapshot.forEach((doc) => {
+      // doc.data() is never undefined for query doc snapshots
+      // console.log(doc.id, " => ", doc.data());
+      arr = [
+        ...arr,
+        {
+          id: doc.id,
+          ...doc.data(),
+        },
+      ];
+    });
+    console.log(arr);
+    setProducts(arr);
+  };
+
+  console.log(products1);
+
+  useEffect(() => {
+    getDataBeauty();
+  }, []);
+
   return (
     <div>
       <div className={cx("container")}>
@@ -155,289 +148,12 @@ function AllProducts() {
         <div className={cx("row")}>
           <div className={cx("col-lg-3")}>
             <div className={cx("collection")}>
-              <div className={cx("title-collection")}>
-                <h2>Danh mục</h2>
-              </div>
-              <div className={cx("content-collection")}>
-                <ul>
-                  <li>
-                    <a href="/">Trang chủ</a>
-                  </li>
-                  <li>
-                    <a href="/intro">Giới thiệu</a>
-                  </li>
-                  <li>
-                    <a href="/">Sản phẩm</a>
-                  </li>
-                  <li>
-                    <a href="/">Khuyến mãi hot</a>
-                  </li>
-                  <li>
-                    <a href="/">Tin tức</a>
-                  </li>
-                  <li>
-                    <a href="/">Liên hệ</a>
-                  </li>
-                </ul>
-              </div>
-              <div className={cx("filter")}>
-                <div className={cx("title-filter")}>
-                  <h2>Thương hiệu</h2>
-                </div>
-                <div className={cx("filter-group")}>
-                  <ul>
-                    <li>
-                      <span>
-                        <input type="checkbox" name="" id="mycheckbox" />
-                        <label htmlFor="mycheckbox">
-                          <p className={cx("my-check-title")}>AHA</p>
-                        </label>
-                      </span>
-                    </li>
-                    <li>
-                      <span>
-                        <input type="checkbox" name="" id="mycheckbox" />
-                        <label htmlFor="mycheckbox">
-                          <p className={cx("my-check-title")}>Aroma</p>
-                        </label>
-                      </span>
-                    </li>
-                    <li>
-                      <span>
-                        <input type="checkbox" name="" id="mycheckbox" />
-                        <label htmlFor="mycheckbox">
-                          <p className={cx("my-check-title")}>Benefit</p>
-                        </label>
-                      </span>
-                    </li>
-                    <li>
-                      <span>
-                        <input type="checkbox" name="" id="mycheckbox" />
-                        <label htmlFor="mycheckbox">
-                          <p className={cx("my-check-title")}>Burberry</p>
-                        </label>
-                      </span>
-                    </li>
-                    <li>
-                      <span>
-                        <input type="checkbox" name="" id="mycheckbox" />
-                        <label htmlFor="mycheckbox">
-                          <p className={cx("my-check-title")}>Chloé</p>
-                        </label>
-                      </span>
-                    </li>
-                    <li>
-                      <span>
-                        <input type="checkbox" name="" id="mycheckbox" />
-                        <label htmlFor="mycheckbox">
-                          <p className={cx("my-check-title")}>
-                            Christian Louboutin
-                          </p>
-                        </label>
-                      </span>
-                    </li>
-                    <li>
-                      <span>
-                        <input type="checkbox" name="" id="mycheckbox" />
-                        <label htmlFor="mycheckbox">
-                          <p className={cx("my-check-title")}> Dior</p>
-                        </label>
-                      </span>
-                    </li>
+              <Categories />
+              <Brands />
+              <PriceRange />
 
-                    <li>
-                      <span>
-                        <input type="checkbox" name="" id="mycheckbox" />
-                        <label htmlFor="mycheckbox">
-                          <p className={cx("my-check-title")}>
-                            {" "}
-                            Dolce & Gabbana
-                          </p>
-                        </label>
-                      </span>
-                    </li>
-                    <li>
-                      <span>
-                        <input type="checkbox" name="" id="mycheckbox" />
-                        <label htmlFor="mycheckbox">
-                          <p className={cx("my-check-title")}>Lancôme</p>
-                        </label>
-                      </span>
-                    </li>
-                    <li>
-                      <span>
-                        <input type="checkbox" name="" id="mycheckbox" />
-                        <label htmlFor="mycheckbox">
-                          <p className={cx("my-check-title")}>L'Occitane</p>
-                        </label>
-                      </span>
-                    </li>
-                    <li>
-                      <span>
-                        <input type="checkbox" name="" id="mycheckbox" />
-                        <label htmlFor="mycheckbox">
-                          <p className={cx("my-check-title")}>Louboutin Diva</p>
-                        </label>
-                      </span>
-                    </li>
-                    <li>
-                      <span>
-                        <input type="checkbox" name="" id="mycheckbox" />
-                        <label htmlFor="mycheckbox">
-                          <p className={cx("my-check-title")}>
-                            Make Up For Ever
-                          </p>
-                        </label>
-                      </span>
-                    </li>
-                    <li>
-                      <span>
-                        <input type="checkbox" name="" id="mycheckbox" />
-                        <label htmlFor="mycheckbox">
-                          <p className={cx("my-check-title")}>Marc Jacobs</p>
-                        </label>
-                      </span>
-                    </li>
-                    <li>
-                      <span>
-                        <input type="checkbox" name="" id="mycheckbox" />
-                        <label htmlFor="mycheckbox">
-                          <p className={cx("my-check-title")}> Maybelline</p>
-                        </label>
-                      </span>
-                    </li>
-                    <li>
-                      <span>
-                        <input type="checkbox" name="" id="mycheckbox" />
-                        <label htmlFor="mycheckbox">
-                          <p className={cx("my-check-title")}>Moon Shadow</p>
-                        </label>
-                      </span>
-                    </li>
-                    <li>
-                      <span>
-                        <input type="checkbox" name="" id="mycheckbox" />
-                        <label htmlFor="mycheckbox">
-                          <p className={cx("my-check-title")}>Oriflame</p>
-                        </label>
-                      </span>
-                    </li>
-                    <li>
-                      <span>
-                        <input type="checkbox" name="" id="mycheckbox" />
-                        <label htmlFor="mycheckbox">
-                          <p className={cx("my-check-title")}>Vichy</p>
-                        </label>
-                      </span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div className={cx("filter-price")}>
-                <div className={cx("filter-price-title")}>
-                  <h2>Khoảng giá</h2>
-                </div>
-                <div className={cx("filter-group")}>
-                  <ul>
-                    <li>
-                      <span>
-                        <input type="checkbox" name="" id="mycheckbox" />
-                        <label htmlFor="mycheckbox">
-                          <p className={cx("my-check-title")}>
-                            Giá dưới 100.000đ
-                          </p>
-                        </label>
-                      </span>
-                    </li>
-                    <li>
-                      <span>
-                        <input type="checkbox" name="" id="mycheckbox" />
-                        <label htmlFor="mycheckbox">
-                          <p className={cx("my-check-title")}>
-                            100.000đ - 200.000đ
-                          </p>
-                        </label>
-                      </span>
-                    </li>
-                    <li>
-                      <span>
-                        <input type="checkbox" name="" id="mycheckbox" />
-                        <label htmlFor="mycheckbox">
-                          <p className={cx("my-check-title")}>
-                            200.000đ - 300.000đ
-                          </p>
-                        </label>
-                      </span>
-                    </li>
-                    <li>
-                      <span>
-                        <input type="checkbox" name="" id="mycheckbox" />
-                        <label htmlFor="mycheckbox">
-                          <p className={cx("my-check-title")}>
-                            300.000đ - 500.000đ
-                          </p>
-                        </label>
-                      </span>
-                    </li>
-                    <li>
-                      <span>
-                        <input type="checkbox" name="" id="mycheckbox" />
-                        <label htmlFor="mycheckbox">
-                          <p className={cx("my-check-title")}>
-                            500.000đ - 1.000.000đ
-                          </p>
-                        </label>
-                      </span>
-                    </li>
-                    <li>
-                      <span>
-                        <input type="checkbox" name="" id="mycheckbox" />
-                        <label htmlFor="mycheckbox">
-                          <p className={cx("my-check-title")}>
-                            Giá trên 1.000.000đ
-                          </p>
-                        </label>
-                      </span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-
-              <div className={cx("filter-color")}>
-                <div className={cx("filter-color-title")}>
-                  <h2>Màu sắc</h2>
-                </div>
-                <div className={cx("filter-color-group")}>
-                  <div className={cx("color-option", "yellow")}></div>
-                  <div className={cx("color-option", "purple")}></div>
-                  <div className={cx("color-option", "red")}></div>
-                  <div className={cx("color-option", "green")}></div>
-                  <div className={cx("color-option", "pink")}></div>
-                  <div className={cx("color-option", "orange")}></div>
-                </div>
-              </div>
-              <div className={cx("filter-hightlight")}>
-                <div className={cx("filter-hightlight-title")}>
-                  <h2>
-                    <a href="">Sản phẩm nổi bật</a>
-                  </h2>
-                </div>
-                <div className={cx("product-mini-lists")}>
-                  {miniMenu &&
-                    miniMenu.length > 1 &&
-                    miniMenu.map((itemMenu, index) => (
-                      <ListMenuMini itemMenu={itemMenu} key={index} />
-                    ))}
-                </div>
-
-                <a href="" className={cx("see-more")}>
-                  Xem thêm
-                  <FontAwesomeIcon
-                    icon={faAngleRight}
-                    style={{ marginLeft: "10px" }}
-                  />
-                </a>
-              </div>
+              <ListColor />
+              <Outstaning />
             </div>
           </div>
 
@@ -450,35 +166,7 @@ function AllProducts() {
                   </h1>
                 </div>
                 <div className={cx("col-lg-8")}>
-                  <div className={cx("sort")}>
-                    <h3>Ưu tiên xem:</h3>
-                    <ul>
-                      <li className={cx("btn-quick-sort")}>
-                        <a href="">
-                          <i></i>
-                          Hàng mới về
-                        </a>
-                      </li>
-                      <li className={cx("btn-quick-sort")}>
-                        <a href="">
-                          <i></i>
-                          Hàng cũ nhất
-                        </a>
-                      </li>
-                      <li className={cx("btn-quick-sort")}>
-                        <a href="">
-                          <i></i>
-                          Giá tăng dần
-                        </a>
-                      </li>
-                      <li className={cx("btn-quick-sort")}>
-                        <a href="">
-                          <i></i>
-                          Giá giảm dần
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
+                  <StatusProduct />
                 </div>
               </div>
 
@@ -494,36 +182,6 @@ function AllProducts() {
                 </div>
               </div>
             </div>
-          </div>
-
-          <div className={cx("navigation-bar clearfix mt-4")}>
-            <ul className={cx("navigation-list")}>
-              <li className={cx("navigation-item")}>
-                <a href="#">
-                  <FontAwesomeIcon
-                    className={cx("icon-last")}
-                    icon={faAngleDoubleLeft}
-                  />
-                </a>
-              </li>
-              <li className={cx("navigation-item")}>
-                <a href="#">1 </a>
-              </li>
-              <li className={cx("navigation-item")}>
-                <a href="#">2</a>
-              </li>
-              <li className={cx("navigation-item")}>
-                <a href="#">3</a>
-              </li>
-              <li className={cx("navigation-item")}>
-                <a href="#">
-                  <FontAwesomeIcon
-                    className={cx("icon-last")}
-                    icon={faAngleDoubleRight}
-                  />
-                </a>
-              </li>
-            </ul>
           </div>
         </div>
       </div>

@@ -1,0 +1,43 @@
+
+.update {
+  h3 {
+    font-style: 16px;
+    font-weight: bold;
+  }
+  padding-top: 50px !important;
+  width: 85%;
+  background-color: var(--white);
+  border-radius: 0.7rem;
+  padding: 1rem;
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  font-size: 13px;
+}
+.update-update {
+  display: flex;
+  gap: 0.5rem;
+  img {
+    border-radius: 50%;
+    height: 3.2rem;
+    width: 3.2rem;
+  }
+  .note {
+    display: flex;
+    flex-direction: column;
+  }
+  .name {
+    font-weight: bold;
+  }
+  .time {
+    font-weight: 500;
+    padding-top: 4px;
+  }
+}
+.customer-review {
+  h3 {
+    padding-top: 20px;
+    font-weight: 16px !important;
+    font-weight: bold;
+  }
+}

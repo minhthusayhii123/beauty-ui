@@ -1,0 +1,44 @@
+
+.filter-color-title h2 {
+  height: 40px;
+  width: 100%;
+  font-size: 24px;
+  line-height: 40px;
+  font-weight: 700;
+}
+.filter-color-group {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  padding-bottom: 20px;
+}
+
+.color-option {
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.yellow {
+  background-color: #f3ff60e8;
+}
+
+.purple {
+  background-color: #9b59b6;
+}
+
+.red {
+  background-color: #e74c3c;
+}
+.green {
+  background-color: #2ecc71;
+}
+.pink {
+  background-color: #f776bec7;
+}
+.orange {
+  background-color: #fdb913;
+}

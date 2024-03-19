@@ -1,4 +1,7 @@
+import { useState } from "react";
 import styles from "./Register.module.scss";
+
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
@@ -6,9 +9,41 @@ import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import loginFb from "~/assets/images/loginFB.svg";
 import loginGg from "~/assets/images/loginGG.svg";
 
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import classNames from "classnames/bind";
 const cx = classNames.bind(styles);
 function Register() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const showToastMessage = () => {
+    toast.success("Success Notification !", {
+      position: "top-right",
+    });
+  };
+  const ErrorMessage = () => {
+    toast.error("Failed Notification !", {
+      position: "top-right",
+    });
+  };
+
+  const handleRegister = (e) => {
+    e.preventDefault();
+
+    const auth = getAuth();
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        showToastMessage();
+      })
+      .catch((error) => {
+        ErrorMessage();
+      });
+  };
+
   return (
     <div className={cx("bread-crumb")}>
       <div className={cx("container")}>
@@ -54,43 +89,47 @@ function Register() {
       <div className={cx("row")}>
         <div className={cx("col-lg-12 col-md-12")}>
           <div className={cx("login-page")}>
-            <form className={cx("login")}>
-              <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">
+            <form className={cx("login")} onSubmit={handleRegister}>
+              {/* <div className="mb-3">
+                <label htmlFor="fullname" className="form-label">
                   Họ và tên:
                 </label>
                 <input
-                  type="email"
-                  class="form-control"
-                  id="exampleInputEmail1"
-                  aria-describedby="emailHelp"
+                  type="text"
+                  className="form-control"
+                  id="fullname"
+                  aria-describedby="fullnamelHelp"
+                  onChange={(e) => setName(e.target.value)}
                 />
-              </div>
-              <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">
+              </div> */}
+              <div className="mb-3">
+                <label htmlFor="email" className="form-label">
                   Email:
                 </label>
                 <input
                   type="email"
-                  class="form-control"
-                  id="exampleInputEmail1"
+                  className="form-control"
+                  id="email"
                   aria-describedby="emailHelp"
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
-              <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">
+              <div className="mb-3">
+                <label htmlFor="password" className="form-label">
                   Mật khẩu:
                 </label>
                 <input
                   type="password"
-                  class="form-control"
-                  id="exampleInputPassword1"
+                  className="form-control"
+                  id="password"
+                  onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
-              <button type="submit" class="btn btn-primary">
+              <button type="submit" className="btn btn-primary">
                 Đăng ký
               </button>
             </form>
+            <ToastContainer />
           </div>
         </div>
       </div>

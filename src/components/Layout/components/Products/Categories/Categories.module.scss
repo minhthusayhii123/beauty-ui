@@ -1,0 +1,22 @@
+
+.title-collection h2 {
+  font-size: 24px;
+  line-height: 40px;
+  font-weight: 700;
+}
+.content-collection ul {
+  padding: 0;
+}
+.content-collection li {
+  position: relative;
+  padding: 5px 0;
+}
+.content-collection a {
+  line-height: 1.7;
+  font-size: 14px;
+  padding: 5px 20px 5px 0px;
+
+  &:hover {
+    color: var(--primary);
+  }
+}

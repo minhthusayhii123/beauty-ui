@@ -73,7 +73,7 @@ function Footer() {
                           <a href="/intro">Giới thiệu</a>
                         </li>
                         <li>
-                          <a href="/product">Sản phẩm</a>
+                          <a href="/products">Sản phẩm</a>
                         </li>
                         <li>
                           <a href="/hot-product">Khuyến mãi hot</a>
@@ -102,7 +102,7 @@ function Footer() {
                           <a href="/intro">Giới thiệu</a>
                         </li>
                         <li>
-                          <a href="/product">Sản phẩm</a>
+                          <a href="/products">Sản phẩm</a>
                         </li>
                         <li>
                           <a href="/hot-product">Khuyến mãi hot</a>

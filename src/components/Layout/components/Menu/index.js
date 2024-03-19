@@ -215,7 +215,7 @@ function Menu() {
                     )}
                   >
                     <li className={cx("menu-item")}>
-                      <a href="/product">
+                      <a href="/products">
                         Sản phẩm
                         <FontAwesomeIcon
                           className={cx("menu-icon")}

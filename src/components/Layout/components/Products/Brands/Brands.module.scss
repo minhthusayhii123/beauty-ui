@@ -1,0 +1,62 @@
+.title-filter h2 {
+  height: 40px;
+  width: 100%;
+  font-size: 24px;
+  line-height: 40px;
+  font-weight: 700;
+  display: inline-block;
+}
+.filter-group {
+  padding-bottom: 25px;
+
+  ul {
+    padding: 0;
+    max-height: 235px;
+    overflow-y: auto;
+
+    li {
+      position: relative;
+      cursor: pointer;
+      line-height: 28px;
+      min-width: 100%;
+
+      span {
+        color: #7b8395;
+        font-size: 14px;
+
+        input[type="checkbox"] {
+          display: none;
+        }
+
+        input[type="checkbox"] + label:before {
+          border-radius: 3px;
+          content: "";
+          line-height: 40;
+          display: flex;
+          font-size: 18px;
+          width: 15px;
+          height: 15px;
+          text-align: center;
+          border: 1px solid #c6cddb;
+          cursor: pointer;
+        }
+
+        input[type="checkbox"]:checked + label:before {
+          background-color: var(--primary);
+          color: #fff;
+        }
+      }
+    }
+  }
+}
+
+.my-check-title {
+  cursor: pointer;
+  position: absolute;
+  top: 0px;
+  left: 25px;
+
+  &:hover {
+    color: var(--primary);
+  }
+}

@@ -6,11 +6,12 @@ import Register from "~/pages/RegisterPage";
 import ContactPage from "~/pages/ContactPage";
 import DetailProduct from "~/pages/DetailProduct";
 import HotProduct from "~/pages/HotProduct";
-import Product from "~/pages/Product";
+import Product from "~/pages/Products";
 import NewsPage from "~/pages/NewsPage";
 import Product3ce from "~/pages/Product3ce";
 import ProductDior from "~/pages/ProductDior";
 import RomandPage from "~/pages/RomandPage";
+import AdminPage from "~/pages/AdminPage";
 
 const publicRoutes = [
   { path: "/", component: Home },
@@ -20,12 +21,13 @@ const publicRoutes = [
   { path: "/register", component: Register },
   { path: "/contact", component: ContactPage },
   { path: "/detail", component: DetailProduct },
-  { path: "/product", component: Product },
+  { path: "/products", component: Product },
   { path: "/hot-product", component: HotProduct },
   { path: "/news", component: NewsPage },
   { path: "/3ce", component: Product3ce },
   { path: "/dior", component: ProductDior },
   { path: "/romand", component: RomandPage },
+  { path: "/admin", component: AdminPage, layout: null },
 ];
 const privateRoutes = [];
 

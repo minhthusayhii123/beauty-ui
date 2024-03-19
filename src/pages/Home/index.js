@@ -1,3 +1,7 @@
+import { useState, useEffect } from "react";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "~/config/firestore";
+
 import Banner from "~/components/Layout/components/Banner";
 import Slide from "~/components/Layout/components/Slide";
 import Products from "~/components/Layout/components/ProductsSelling";
@@ -25,6 +29,7 @@ import spRomand_1 from "~/assets/images/romand-2.webp";
 import spRomand_2 from "~/assets/images/romand-4.webp";
 import spRomand_3 from "~/assets/images/romand-5.webp";
 import spRomand_4 from "~/assets/images/romand-7.webp";
+
 const products = [
   {
     name: "[PURE PAIRING] 3CE SOFT MATTE LIPSTICK",
@@ -132,7 +137,7 @@ const sections = [
     linkto: "/romand",
   },
 ];
-console.log(sections);
+
 function Home() {
   return (
     <div>

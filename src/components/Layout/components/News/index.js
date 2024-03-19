@@ -99,7 +99,7 @@ function News() {
                     <a href="/intro">Giới thiệu</a>
                   </li>
                   <li>
-                    <a href="/product">Sản phẩm</a>
+                    <a href="/products">Sản phẩm</a>
                     <FontAwesomeIcon
                       className={cx("icon-menu")}
                       icon={faAngleRight}

@@ -53,7 +53,7 @@ function Products() {
           <div className={cx("col-lg-12")}>
             <div className={cx("heading-hotdeal")}>
               <h2 className={cx("title-head")}>
-                <a href="/product">Sản phẩm bán chạy</a>
+                <a href="/products">Sản phẩm bán chạy</a>
               </h2>
             </div>
           </div>

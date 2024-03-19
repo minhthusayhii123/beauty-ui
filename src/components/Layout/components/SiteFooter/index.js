@@ -19,8 +19,6 @@ function SiteFooter() {
                   type="email"
                   className={cx("form-input")}
                   placeholder="Nhập Email của bạn"
-                  name="email"
-                  id="email"
                 />
                 <span className={cx("btn-email")}>
                   <button>Đăng ký</button>
